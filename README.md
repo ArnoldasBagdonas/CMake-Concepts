@@ -28,8 +28,8 @@ This section delves into more details about the best practices in the following 
 9. Installing: Explains the installation process for the project.
 10. Development using Devcontainer: Guidelines on using DevContainer for development.
 11. Static Code Analysis: Discusses static code analysis tools like Clang's scan-build and cppcheck.
-12. Code Style Guidelines: Describes the usage of Clang-format for enforcing code style guidelines.
-13. CDash and CI Pipeline: Covers the usage of CDash and continuous integration (CI) pipelines, including code coverage and sanitizers.
+12. CDash and CI Pipeline: Covers the usage of CDash and continuous integration (CI) pipelines, including code coverage and sanitizers.
+13. Code Style Guidelines: Describes the usage of Clang-format for enforcing code style guidelines.
 14. Documentation Generation: Demonstrates generating project documentation using tools like Doxygen or Sphinx.
 
 ## Examples
