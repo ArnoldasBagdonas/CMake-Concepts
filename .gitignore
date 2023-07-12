@@ -7,3 +7,5 @@
 03-specify-cpp-standard/.vscode
 04-static-library/build
 04-static-library/.vscode
+05-shared-library/build
+05-shared-library/.vscode
