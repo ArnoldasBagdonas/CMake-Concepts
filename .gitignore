@@ -11,3 +11,5 @@
 05-shared-library/.vscode
 06-third-party-library/build
 06-third-party-library/.vscode
+07-code-generation/build
+07-code-generation/.vscode
