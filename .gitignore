@@ -5,3 +5,5 @@
 02-configure-header-file/.vscode
 03-specify-cpp-standard/build
 03-specify-cpp-standard/.vscode
+04-static-library/build
+04-static-library/.vscode
