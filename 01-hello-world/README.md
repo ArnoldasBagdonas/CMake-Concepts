@@ -1,4 +1,4 @@
-# Out-of-Source Builds
+# Example Project: Out-of-Source Builds
 
 Encouraging out-of-source builds is recommended as it keeps the source code directory clean and avoids cluttering it with build artifacts. This practice involves creating a separate directory for the build process, which helps maintain a clear separation between the source and build directories.
 
