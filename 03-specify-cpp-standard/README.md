@@ -9,32 +9,32 @@ Here are some best practices for specifying the C++ standard using CMake:
   ```
   set(CMAKE_CXX_STANDARD 11)
   ```
-In this example, the C++ standard is set to C++17 for the entire project. You can replace `17` with the desired C++ standard version, such as `11`, `14`, or `20`.
+  In this example, the C++ standard is set to C++17 for the entire project. You can replace `17` with the desired C++ standard version, such as `11`, `14`, or `20`.
 
 - **Set the C++ standard at the target level**: If you have multiple targets within your project that require different C++ standards, you can specify the C++ standard individually for each target using the `target_compile_features` command.
   ```
   target_compile_features(my_target PRIVATE cxx_std_20)
   ```
-In this example, the target `my_target` is set to require at least C++20 features. This will override the project-level standard specified by `CMAKE_CXX_STANDARD` for this specific target.
+  In this example, the target `my_target` is set to require at least C++20 features. This will override the project-level standard specified by `CMAKE_CXX_STANDARD` for this specific target.
 
 - **Consider compiler support**: It's important to verify that the C++ compiler being used supports the specified C++ standard. CMake will generate an error during configuration if the compiler doesn't support the requested standard. You can use the `target_compile_features` command to enforce the required C++ standard and check for compiler support.
   ```
   target_compile_features(my_target PRIVATE cxx_std_17)
   ```
-By specifying `cxx_std_17`, CMake ensures that the compiler supports at least the C++17 standard for the `my_target` target.
+  By specifying `cxx_std_17`, CMake ensures that the compiler supports at least the C++17 standard for the `my_target` target.
 
 - **Provide fallback options**: To handle situations where the desired C++ standard is not available, it's good practice to provide fallback options. You can use the `CMAKE_CXX_STANDARD_REQUIRED` variable to enforce the specified C++ standard or fallback to a lower version if necessary.
   ```
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
   set(CMAKE_CXX_STANDARD 14)
   ```
-In this example, the C++ standard is set to C++14, and `CMAKE_CXX_STANDARD_REQUIRED` is enabled. If the compiler does not support C++14, CMake will generate an error.
+  In this example, the C++ standard is set to C++14, and `CMAKE_CXX_STANDARD_REQUIRED` is enabled. If the compiler does not support C++14, CMake will generate an error.
 
 - **Use a consistent C++ standard**: It's generally recommended to use a consistent C++ standard across your entire project to maintain code compatibility and readability. Specify the desired C++ standard in the root CMakeLists.txt file using `CMAKE_CXX_STANDARD`, and it will be inherited by all targets and subdirectories.
   ```
   set(CMAKE_CXX_STANDARD 20)
   ```
-By setting this variable in the root CMakeLists.txt file, the specified C++ standard will apply to the entire project unless overridden at the target level.
+  By setting this variable in the root CMakeLists.txt file, the specified C++ standard will apply to the entire project unless overridden at the target level.
 
 - **Consider platform-specific differences**: Different compilers and platforms may have varying levels of C++ standard support. Take into account the requirements and limitations of your target platforms to ensure compatibility and adjust the specified C++ standard accordingly.
 
