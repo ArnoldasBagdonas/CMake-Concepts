@@ -3,3 +3,5 @@
 01-hello-world/.vscode
 02-configure-header-file/build
 02-configure-header-file/.vscode
+03-specify-cpp-standard/build
+03-specify-cpp-standard/.vscode
