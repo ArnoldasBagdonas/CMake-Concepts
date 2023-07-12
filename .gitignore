@@ -1,3 +1,5 @@
 ### Build dir ###
 01-hello-world/build
 01-hello-world/.vscode
+02-configure-header-file/build
+02-configure-header-file/.vscode
