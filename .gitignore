@@ -9,3 +9,5 @@
 04-static-library/.vscode
 05-shared-library/build
 05-shared-library/.vscode
+06-third-party-library/build
+06-third-party-library/.vscode
