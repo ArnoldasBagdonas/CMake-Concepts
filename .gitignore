@@ -13,3 +13,7 @@
 06-third-party-library/.vscode
 07-code-generation/build
 07-code-generation/.vscode
+08-testing-support/gtest/build
+08-testing-support/gtest/.vscode
+08-testing-support/catch2/build
+08-testing-support/catch2/.vscode
