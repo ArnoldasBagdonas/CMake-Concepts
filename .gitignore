@@ -19,3 +19,9 @@
 08-testing-support/catch2/.vscode
 09-installing/build
 09-installing/.vscode
+11-static-code-analysis/scan-build/build
+11-static-code-analysis/scan-build/.vscode
+11-static-code-analysis/cppcheck/build
+11-static-code-analysis/cppcheck/.vscode
+11-static-code-analysis/clang-format/build
+11-static-code-analysis/clang-format/.vscode
