@@ -30,10 +30,10 @@ While static code analysis is a powerful tool, it has certain limitations and ma
     ```cpp
     void func(char* arg)
     {
-    char buf1[10];
-    char buf2[20];
+        char buf1[10];
+        char buf2[20];
 
-    strncpy(buf1, arg, sizeof(buf2));
+        strncpy(buf1, arg, sizeof(buf2));
     }
     ```
     In this example, `strncpy` copies data from `arg` to `buf1`, but the size argument is mistakenly set to `sizeof(buf2)` instead of `sizeof(buf1)`. This bug may lead to buffer overflow, but Clang's scan-build and potentially other static analysis tools might not detect it due to the complexity involved in tracking buffer sizes across function calls.
