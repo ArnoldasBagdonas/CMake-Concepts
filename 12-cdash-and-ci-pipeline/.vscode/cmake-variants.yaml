@@ -1,0 +1,69 @@
+buildType:
+  default: Release
+  choices:
+    debug:
+      short: Debug
+      long: Emit debug information
+      buildType: Debug
+      settings:
+        BUILD_NAME: Debug
+    release:
+      short: Release
+      long: Optimize generated code
+      buildType: Release
+      settings:
+        BUILD_NAME: Release
+    minisizerel:
+      short: MinSizeRel
+      long: Optimize for size
+      buildType: MinSizeRel
+      settings:
+        BUILD_NAME: MinSizeRel
+    relwithdebinfo:
+      short: RelWithDebInfo
+      long: Optimize generated code
+      buildType: RelWithDebInfo
+      settings:
+        BUILD_NAME: RelWithDebInfo
+    debugcoverage:
+      short: Coverage
+      long: Debug with coverage analysis
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: Coverage
+    debugaddress:
+      short: AddressSanitizer
+      long: Debug with AddressSanitizer
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: AddressSanitizer
+    debugleak:
+      short: LeakSanitizer
+      long: Debug with LeakSanitizer
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: LeakSanitizer
+    debugthread:
+      short: ThreadSanitizer
+      long: Debug with ThreadSanitizer
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: ThreadSanitizer
+    debugmemory:
+      short: MemorySanitizer
+      long: Debug with MemorySanitizer
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: MemorySanitizer
+    debugbehavior:
+      short: UndefinedBehaviorSanitizer
+      long: Debug with UndefinedBehaviorSanitizer
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: UndefinedBehaviorSanitizer
