@@ -67,3 +67,10 @@ buildType:
       settings:
          ENABLE_COVERAGE: ON
          BUILD_NAME: UndefinedBehaviorSanitizer
+    debugvalgrind:
+      short: Valgrind
+      long: Debug with Valgrind
+      buildType: Debug
+      settings:
+         ENABLE_COVERAGE: ON
+         BUILD_NAME: Valgrind

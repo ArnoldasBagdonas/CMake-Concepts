@@ -108,6 +108,12 @@ if((CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang") AND (CMAKE_BUILD_TYPE MATCHES "De
     add_link_options(-fsanitize=vptr)
   endif()
 
+  if(SANITIZER_ID STREQUAL "VALGRIND")
+    message("* Adding correct flags to enable Valgrind through a build type")
+    set(VALGRIND_OPTIONS --error-exitcode=1 --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=all --gen-suppressions=all)
+  endif()
+
+
 endif()
 
 # Configure CDash
@@ -224,11 +230,18 @@ target_include_directories(test_undefinedBehaviorSanitizerDefects
 
 # Discover GoogleTest tests
 include(GoogleTest)
-gtest_discover_tests(test_addressSanitizerDefects TEST_LIST test_addressSanitizerDefects_list)
-set_tests_properties(${test_addressSanitizerDefects_list} PROPERTIES TIMEOUT 10)
+gtest_discover_tests(test_addressSanitizerDefects)
+gtest_discover_tests(test_threadSanitizerDefects)
+gtest_discover_tests(test_undefinedBehaviorSanitizerDefects)
 
-gtest_discover_tests(test_threadSanitizerDefects TEST_LIST test_threadSanitizerDefects_list)
-set_tests_properties(${test_threadSanitizerDefects_list} PROPERTIES TIMEOUT 10)
+# Run tests with Valgrind
+if(SANITIZER_ID STREQUAL "VALGRIND")
+  add_test(NAME memchecked_test_addressSanitizerDefects
+         COMMAND valgrind ${VALGRIND_OPTIONS} $<TARGET_FILE:test_addressSanitizerDefects>)
 
-gtest_discover_tests(test_undefinedBehaviorSanitizerDefects TEST_LIST test_undefinedBehaviorSanitizerDefects_list)
-set_tests_properties(${test_undefinedBehaviorSanitizerDefects_list} PROPERTIES TIMEOUT 10)
+  add_test(NAME memchecked_test_threadSanitizerDefects
+         COMMAND valgrind ${VALGRIND_OPTIONS} $<TARGET_FILE:test_threadSanitizerDefects>)
+
+  add_test(NAME memchecked_test_undefinedBehaviorSanitizerDefects
+         COMMAND valgrind ${VALGRIND_OPTIONS} $<TARGET_FILE:test_undefinedBehaviorSanitizerDefects>)
+endif()

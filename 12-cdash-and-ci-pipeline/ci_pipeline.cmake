@@ -58,6 +58,11 @@ endif()
 # Set the CTest memory check type to the selected BUILD_NAME if it corresponds to a memory sanitizer.
 if (BUILD_NAME MATCHES "AddressSanitizer|LeakSanitizer|ThreadSanitizer|MemorySanitizer|UndefinedBehaviorSanitizer|Valgrind")
   set(CTEST_MEMORYCHECK_TYPE ${BUILD_NAME})
+  if (BUILD_NAME MATCHES "Valgrind")
+    # Find Valgrind
+    find_program(CTEST_MEMORYCHECK_COMMAND NAMES valgrind)
+    set(CTEST_MEMORYCHECK_COMMAND_OPTIONS "--error-exitcode=1 --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=all --gen-suppressions=all")
+  endif()
 endif()
 
 # Additional Options for Coverage
