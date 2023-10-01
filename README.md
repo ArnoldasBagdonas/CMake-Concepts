@@ -17,20 +17,23 @@ This repository provides examples and demonstrations of best practices in CMake,
 
 This section delves into more details about the best practices in the following areas:
 
-1. Hello World: Demonstrates the concept of out-of-source builds, keeping the source directory clean.
-2. Configure Header File: Explains how to use a configuration header file to set project-specific variables.
-3. Specify C++ Standard: Shows how to specify the C++ standard for the project.
-4. Static Library: Illustrates the creation and usage of a static library.
-5. Shared Library: Covers the creation and usage of a shared library.
-6. Third-Party Library: Provides insights into integrating and managing third-party libraries.
-7. Code Generation: Demonstrates code generation techniques and their use cases.
-8. Testing Support: Covers testing practices and shows how to use and configure external testing frameworks like Google Test (gtest) and Catch2.
-9. Installing: Explains the installation process for the project.
-10. Development using Devcontainer: Guidelines on using DevContainer for development.
-11. Static Code Analysis: Discusses static code analysis tools like Clang's scan-build and cppcheck.
-12. CDash and CI Pipeline: Covers the usage of CDash and continuous integration (CI) pipelines, including code coverage and sanitizers.
-13. Code Style Guidelines: Describes the usage of Clang-format for enforcing code style guidelines.
-14. Documentation Generation: Demonstrates generating project documentation using tools like Doxygen or Sphinx.
+1. **Hello World**: Demonstrates the concept of out-of-source builds, keeping the source directory clean.
+2. **Configure Header File**: Explains how to use a configuration header file to set project-specific variables. **Feature**: Some times it is important to use a static template file (not header file!), this allow to avoid unnecessary recompilation of files that don't require any changes, thus speeding up the build process.
+3. **Specify C++ Standard**: Shows how to specify the C++ standard for the project.  **Feature**: This example project defines a regular expression to extract the version string from the source file "cogen.hpp" using the pattern #define COGEN_VERSION followed by a version number. The extracted version string is then used for project versioning.**Feature**: It also shows how to use coroutines, a powerful language feature introduced in C++20 that allow for cooperative multitasking, state machines, and asynchronous programming.
+4. **Static Library**: Illustrates the creation and usage of a static library.
+5. **Shared Library**: Covers the creation and usage of a shared library.
+6. **Third-Party Library**: Provides insights into integrating and managing third-party libraries.
+7. **Code Generation**: Demonstrates code generation techniques and their use cases. **Feature**: This example project has python generator utility controlled by command line arguments that could be inegrated into cmake prject using two different approaches.
+8. **Testing Support**: Covers testing practices and shows how to use and configure external testing frameworks like Google Test (gtest) and Catch2.
+9. **Installing**: Explains the installation process for the project.
+10. **Development using Devcontainer**: Guidelines on using DevContainer for development.
+11. **Static Code Analysis**: Discusses static code analysis tools like Clang's scan-build and cppcheck.
+12. **CDash and CI Pipeline**: Covers the usage of CDash and continuous integration (CI) pipelines, including code coverage and sanitizers.
+13. **Code Style Guidelines**: Describes the usage of Clang-format for enforcing code style guidelines.
+14. **Documentation Generation**: Demonstrates generating project documentation using tools like Doxygen or Sphinx.
+
+These detailed topics provide valuable insights into project lifecycle management with the CMake family of tools, helping you effectively develop and manage your projects from start to finish:
+![Alt text](cmake.webp)
 
 ## Examples
 
