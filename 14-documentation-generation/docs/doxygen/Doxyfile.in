@@ -22,6 +22,7 @@
 
 # Sphinx integration
 # GENERATE_XML           = @DOXYGEN_GENERATE_XML@
+# XML_NS_MEMB_FILE_SCOPE = YES
 #---------------------------------------------------------------------------
 
 # Doxyfile 1.9.1
@@ -2145,7 +2146,7 @@ XML_PROGRAMLISTING     = YES
 # The default value is: NO.
 # This tag requires that the tag GENERATE_XML is set to YES.
 
-XML_NS_MEMB_FILE_SCOPE = NO
+XML_NS_MEMB_FILE_SCOPE = YES
 
 #---------------------------------------------------------------------------
 # Configuration options related to the DOCBOOK output
