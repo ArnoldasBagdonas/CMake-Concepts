@@ -15,19 +15,22 @@ import sys
 import xml.etree.ElementTree as ET
 
 # Define the Doxygen XML path
-doxygen_xml_path = os.path.abspath('build/doxygen/xml')
+doxygen_xml_path = os.path.abspath('/workspace/14-documentation-generation/build/doxygen/xml')
 
 # Add the Doxygen XML directory to the Python path
 sys.path.insert(0, doxygen_xml_path)  
 
 # Doxygen
-#subprocess.call('doxygen Doxyfile.in', shell=True)
+#subprocess.call('doxygen /workspace/14-documentation-generation/build/Doxyfile', shell=True)
 
 # -- Project information -----------------------------------------------------
 
-project = 'Example Project'
+project = 'ExampleProject'
 copyright = "2023, Author's Name"
 author = "Author's Name"
+
+# The full version, including alpha/beta/rc tags
+release = '1.2.3'
 
 # -- General configuration ---------------------------------------------------
 
@@ -100,6 +103,6 @@ html_static_path = ['_static']
 # -- Breathe configuration -------------------------------------------------
 
 breathe_projects = {
-	"xml_doxygen": doxygen_xml_path
+	"ExampleProject": doxygen_xml_path
 }
-breathe_default_project = "xml_doxygen"
+breathe_default_project = "ExampleProject"

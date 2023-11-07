@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(HelloWorld VERSION 1.2.3)
+project(ExampleProject VERSION 1.2.3)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -24,14 +24,14 @@ if(DOXYGEN_FOUND)
     #set(DOXYGEN_XML_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/doxygen/xml)
 
     # Configure the Doxyfile
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
 
     # Configure the Sphinx conf.py
-    # configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx/conf.py.in ${CMAKE_CURRENT_SOURCE_DIR}/conf.py @ONLY)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/sphinx/conf.py.in ${CMAKE_CURRENT_SOURCE_DIR}/docs/conf.py @ONLY)
     
     # Create a custom target to generate Doxygen configuration
     add_custom_target(doxyconfig ALL COMMAND ${DOXYGEN_EXECUTABLE} -g Doxyfile.in.default
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen
         COMMENT "Generating Doxygen config file" VERBATIM)
 
     # Create a custom target to generate API documentation with Doxygen
@@ -42,8 +42,8 @@ if(DOXYGEN_FOUND)
     add_dependencies(doxygen PlantUML)
 
     # Create a custom target to generate API documentation with Sphinx
-    add_custom_target(sphinx ALL COMMAND sphinx-build -b html ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/sphinx
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    add_custom_target(sphinx ALL COMMAND sphinx-build -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs ${CMAKE_CURRENT_BINARY_DIR}/sphinx
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs
         COMMENT "Generating API documentation with Sphinx" VERBATIM)
     
     add_dependencies(sphinx doxygen)

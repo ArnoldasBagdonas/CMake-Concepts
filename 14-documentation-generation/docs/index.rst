@@ -9,10 +9,9 @@ Welcome to the documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
-   README
-   doxygen
 
+   requirements/SOFTWARE
+   doxygen
 
 Indices and tables
 ==================
