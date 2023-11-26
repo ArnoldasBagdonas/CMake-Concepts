@@ -13,15 +13,16 @@
 import os
 import sys
 import xml.etree.ElementTree as ET
+import subprocess
 
 # Define the Doxygen XML path
-doxygen_xml_path = os.path.abspath('/workspace/14-documentation-generation/build/doxygen/xml')
+doxygen_xml_path = os.path.abspath('/workspace/build/breathe/xml')
 
 # Add the Doxygen XML directory to the Python path
 sys.path.insert(0, doxygen_xml_path)  
 
 # Doxygen
-#subprocess.call('doxygen /workspace/14-documentation-generation/build/Doxyfile', shell=True)
+subprocess.call('doxygen /workspace/build/DoxyfileBreathe', shell=True)
 
 # -- Project information -----------------------------------------------------
 
@@ -33,6 +34,29 @@ author = "Author's Name"
 release = '1.2.3'
 
 # -- General configuration ---------------------------------------------------
+
+# Specify the master document name (the main entry point of your documentation).
+master_doc = 'index'
+
+# Use LaTeX builder for PDF output.
+# This requires installing LaTeX (e.g., TeXLive or MikTeX) on your system.
+# You can use the 'sphinxcontrib.bibtex' extension if you need to manage citations.
+latex_engine = 'xelatex'  # Use this if you need a specific LaTeX engine.
+
+# Grouping the document tree into PDF files. You can customize this as needed.
+latex_documents = [
+    (master_doc, 'ExampleProject.tex', 'ExampleProject Documentation', 'Author\'s Name', 'manual'),
+]
+
+# Additional options for LaTeX (you can customize as needed).
+latex_elements = {
+    'papersize': 'letterpaper',
+    'pointsize': '10pt',
+    'preamble': r'''
+        \usepackage{fontspec}
+        \setmainfont{Arial}
+    ''',
+}
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -49,8 +73,38 @@ extensions = [
     'sphinx_sitemap',
     'sphinx.ext.inheritance_diagram',
     'breathe',
-    'myst_parser'
+    'myst_parser',
+    'sphinx_needs',
+    'sphinxcontrib.plantuml',
 ]
+plantuml = 'java -jar /plantuml/plantuml.jar'
+
+# Sphinx-Needs
+
+
+# Define own need types
+
+needs_types = [dict(directive="req", title="Requirement", prefix="R_", color="#BFD8D2", style="node"),
+               dict(directive="spec", title="Specification", prefix="S_", color="#FEDCD2", style="node"),
+               dict(directive="impl", title="Implementation", prefix="I_", color="#DF744A", style="node"),
+               dict(directive="test", title="Test Case", prefix="T_", color="#DCB239", style="node"),
+               # Kept for backwards compatibility
+               dict(directive="need", title="Need", prefix="N_", color="#9856a5", style="node")
+           ]
+
+# Define own options
+needs_extra_options = [ "integrity", "assignee" ]
+
+# Define own link types
+needs_extra_links = [
+    { "option": "checks",
+      "incoming": "is checked by",
+      "outgoing": "checks" },
+
+    { "option": "implements",
+      "incoming": "is implemented by",
+      "outgoing": "implements" }]
+
 
 breathe_default_members = ('members', 'undoc-members')
 breathe_implementation_filename_extensions = ['.c', '.cc', '.cpp']
@@ -67,6 +121,11 @@ source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
 }
+
+# Tell sphinx what the primary language being documented is.
+primary_domain = 'cpp'
+# Tell sphinx what the pygments highlight language should be.
+highlight_language = 'cpp'
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -99,6 +158,10 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# You might want to exclude certain parts from HTML, e.g., LaTeX-specific parts.
+exclude_patterns += ['**/*.tex', '**/*.tex_t']
+
 
 # -- Breathe configuration -------------------------------------------------
 

@@ -23,8 +23,9 @@ if(DOXYGEN_FOUND)
     set(DOXYGEN_GENERATE_XML YES)
     #set(DOXYGEN_XML_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/doxygen/xml)
 
-    # Configure the Doxyfile
+    # Configure the Doxyfiles
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen/DoxyfileBreathe.in ${CMAKE_CURRENT_BINARY_DIR}/DoxyfileBreathe @ONLY)
 
     # Configure the Sphinx conf.py
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/sphinx/conf.py.in ${CMAKE_CURRENT_SOURCE_DIR}/docs/conf.py @ONLY)
@@ -38,36 +39,40 @@ if(DOXYGEN_FOUND)
     add_custom_target(doxygen ALL COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Generating API documentation with Doxygen" VERBATIM)
-    
-    add_dependencies(doxygen PlantUML)
-
-    # Create a custom target to generate API documentation with Sphinx
-    add_custom_target(sphinx ALL COMMAND sphinx-build -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs ${CMAKE_CURRENT_BINARY_DIR}/sphinx
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs
-        COMMENT "Generating API documentation with Sphinx" VERBATIM)
-    
-    add_dependencies(sphinx doxygen)
-
     # Add target to build PDF from LaTeX
     find_program(PDFLATEX_EXECUTABLE NAMES pdflatex)
 
     if(PDFLATEX_EXECUTABLE)
-        add_custom_target(refman
+        # Add a custom command to run 'make all-pdf' after the doxygen target's build is complete
+        add_custom_command(TARGET doxygen
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixLatexCode.cmake
             COMMAND ${CMAKE_MAKE_PROGRAM} -f Makefile
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doxygen/latex/
-            COMMENT "Compiling LaTeX documentation")
-        
-        # Add a custom target to fix LaTeX code
-        # TODO: figure out how to configure Doxygen properly!
-        add_custom_target(latex ALL
-            COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixLatexCode.cmake
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doxygen/latex/
-            COMMENT "Fix LaTeX code" VERBATIM)
-
-        # Ensure that code replacement happens before LaTeX compilation
-        add_dependencies(latex doxygen)
-        add_dependencies(refman latex)
+            COMMENT "Executing the FixLatexCode.cmake script after Doxygen build and Compiling LaTeX documentation")
     endif()
+    
+    add_dependencies(doxygen PlantUML)
+
+    # Create a custom target to generate API documentation with Sphinx (html)
+    add_custom_target(sphinx_html ALL COMMAND sphinx-build -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs ${CMAKE_CURRENT_BINARY_DIR}/sphinx/html
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs
+        COMMENT "Generating API documentation with Sphinx" VERBATIM)
+
+    # Create a custom target to generate API documentation with Sphinx (pdf)
+    add_custom_target(sphinx_pdf ALL COMMAND sphinx-build -b latex ${CMAKE_CURRENT_SOURCE_DIR}/docs ${CMAKE_CURRENT_BINARY_DIR}/sphinx/pdf
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs
+        COMMENT "Generating API documentation with Sphinx" VERBATIM)
+    
+    # Add the manual step of executing "make all-pdf" after the sphinx target
+    add_custom_command(TARGET sphinx_pdf
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_CURRENT_BINARY_DIR}/sphinx/pdf make all-pdf
+        COMMENT "Running 'make all-pdf' after Sphinx build")
+        
+    add_dependencies(sphinx_html PlantUML)
+    add_dependencies(sphinx_pdf PlantUML)
+
 endif()
 
 #add_executable(HelloWorld main.cpp)

@@ -27,5 +27,7 @@
 11-static-code-analysis/clang-format/.vscode
 12-cdash-and-ci-pipeline/build
 12-cdash-and-ci-pipeline/CTestConfig.cmake.in
-14-documentation-generation/build
-14-documentation-generation/.vscode
+14-documentation-generation/sphinx_doxygen/build
+14-documentation-generation/sphinx_doxygen/.vscode
+14-documentation-generation/sphinx_needs/build
+14-documentation-generation/sphinx_needs/.vscode

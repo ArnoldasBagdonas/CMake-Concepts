@@ -20,8 +20,8 @@
 		"--privileged",
 		"--device=/dev/bus/usb:/dev/bus/usb"
 	],
-	"workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace,type=bind",
-	"workspaceFolder": "/workspace/14-documentation-generation",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+	"workspaceFolder": "/workspace",
 	// Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "root"
 	//"remoteUser": "vscode"

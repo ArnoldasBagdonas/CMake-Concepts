@@ -7,15 +7,12 @@ Welcome to the documentation!
 =============================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
-   requirements/SOFTWARE
-   doxygen
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   readme/README.md
+   requirements/index
+   specifications/index
+   implementation/index
+   testing/index
+   reports/index
