@@ -143,17 +143,35 @@ Traceability
   the completeness and effectiveness of the testing process in achieving functional
   safety.
 
-MVP
+MVP Traceability
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. needflow::
   :tags: mvp
 
 
-All
+Project Traceability
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. needflow::
+
+
+.. needtable:: Open requirements, specifications, implementations and test cases
+  :style: table
+  :status: open
+  :columns: id, type, tags, title, outgoing
+
+
+.. needtable:: In progress requirements, specifications, implementations and test cases
+  :style: table
+  :status: in progress
+  :columns: id, type, tags, title, outgoing
+
+
+.. needtable:: Closed requirements, specifications, implementations and test cases
+  :style: table
+  :status: closed
+  :columns: id, type, tags, title, outgoing
 
 
 Defect Tracking

@@ -8,7 +8,7 @@
 # IMAGE_PATH             = @CMAKE_SOURCE_DIR@/docs
 # USE_MDFILE_AS_MAINPAGE = @CMAKE_SOURCE_DIR@/README.md
 # HTML_EXTRA_STYLESHEET  = @CMAKE_SOURCE_DIR@/docs/doxygen/custom.css
-# EXCLUDE                = @CMAKE_BINARY_DIR@
+# EXCLUDE                = @CMAKE_BINARY_DIR@ @CMAKE_SOURCE_DIR@/docs/readme
 # LATEX_HEADER           = @CMAKE_SOURCE_DIR@/doxygen_customizations.tex
 # LATEX_HEADER_EXTRA = \\makeatletter\\newenvironment{DoxyInlineImage}{\\begin{center}\\includegraphics[width=\\textwidth,keepaspectratio=true]}{\\end{center}}\\makeatother
 # GENERATE_DOCBOOK       = YES
@@ -978,7 +978,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = @CMAKE_BINARY_DIR@
+EXCLUDE                = @CMAKE_BINARY_DIR@ @CMAKE_SOURCE_DIR@/docs/readme
 # Exclude additional folders or files
 #EXCLUDE +=  @CMAKE_SOURCE_DIR@/conf.py
 

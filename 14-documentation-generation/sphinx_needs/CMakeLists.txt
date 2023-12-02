@@ -37,7 +37,9 @@ if(DOXYGEN_FOUND)
         COMMENT "Generating Doxygen config file" VERBATIM)
 
     # Create a custom target to generate API documentation with Doxygen
-    add_custom_target(doxygen ALL COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+    add_custom_target(doxygen ALL 
+        COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/doxygen
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Generating API documentation with Doxygen" VERBATIM)
     # Add target to build PDF from LaTeX

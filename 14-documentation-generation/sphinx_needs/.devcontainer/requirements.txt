@@ -9,3 +9,4 @@ myst_parser
 sphinx-needs
 sphinxcontrib-plantuml
 matplotlib
+mlx.traceability

@@ -88,7 +88,7 @@ Reporting
 
 .. req:: Add Book
    :id: FR_002
-   :status: closed
+   :status: open
 
    Users can add new books to the library catalog
 
@@ -104,7 +104,7 @@ Reporting
 .. req:: Return Book
    :id: FR_004
    :tags: mvp
-   :status: open
+   :status: closed
 
    Users can return borrowed books to the library
 

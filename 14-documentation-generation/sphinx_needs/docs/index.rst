@@ -11,8 +11,8 @@ Welcome to the documentation!
    :caption: Contents:
 
    readme/README.md
-   requirements/index
-   specifications/index
-   implementation/index
-   testing/index
-   reports/index
+   requirements
+   specifications
+   implementation
+   testing
+   reports
