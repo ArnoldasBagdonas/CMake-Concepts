@@ -11,11 +11,118 @@
 
 ## Introduction
 
-This repository provides examples and demonstrations of best practices in CMake, a popular build system tool widely appreciated by software engineers. The examples highlight various concepts and techniques that are commonly favored in CMake-based projects.
+This repository provides examples and demonstrations of best practices in CMake, a popular build system tool widely appreciated among software engineers. The examples highlight various concepts and techniques that are commonly favored in projects using the CMake family of tools.
+
+These detailed topics offer valuable insights into project lifecycle management with the CMake family of tools, helping you effectively develop and manage your projects from start to finish:
+
+<div hidden>
+@startuml CMakeFlowchart
+rectangle "Project" as project {
+    skinparam rectangle {
+        roundCorner 15
+    }
+    rectangle "Project\nCMakeList.txt" as CMakeList {
+        skinparam rectangle {
+            roundCorner 15
+        }
+    }
+    rectangle "Source files" as sourceFiles1 {
+            skinparam rectangle {
+            roundCorner 15
+        }
+    }
+}
+
+rectangle "Source files" as sourceFiles {
+    skinparam rectangle {
+        roundCorner 15
+    }
+    rectangle "Project\nSource files" as sourceFiles2 {
+            skinparam rectangle {
+            roundCorner 15
+        }
+    }
+    rectangle "Generated\nsource files" as genSourceFiles {
+        skinparam rectangle {
+            roundCorner 15
+        }
+    }
+}
+
+rectangle "Scripts for native\nbuild tools" as scripts {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+rectangle "Build targets" as targets {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+rectangle "Dashboard" as dashboard {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+
+rectangle "Packages" as packages{
+    skinparam rectangle {
+        roundCorner 15
+    }
+rectangle "Source package" as sourcePackage {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+rectangle "Binary package" as binaryPackage {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+}
+rectangle "Installed package" as installedPackage {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+rectangle "Installed files" as installedFiles {
+    skinparam rectangle {
+        roundCorner 15
+    }
+}
+
+scripts -left->  genSourceFiles: B
+
+sourceFiles1 .. sourceFiles2: Part of
+
+sourceFiles2 --> genSourceFiles: C
+CMakeList --> genSourceFiles: C
+CMakeList --> scripts: C, G
+sourceFiles -left-> targets : B
+scripts -->  targets: B
+scripts -->  scripts: C
+project --> sourcePackage: P
+targets --> binaryPackage: P
+targets --> dashboard: T, D
+sourceFiles --> installedFiles: I
+targets --> installedFiles: I
+binaryPackage --> installedPackage : PI
+@enduml
+</div>
+
+![](CMakeFlowchart.png)
+
+- C, CMake time
+- G, Generation time
+- B, Build time
+- T, CTest time
+- D, CDash time
+- I, Install time
+- PI, Package install time
 
 ## CMake Project Concepts
 
-This section delves into more details about the best practices in the following areas:
+This section delves into more details about best practices in the following areas:
 
 1. **Hello World**: Demonstrates the concept of out-of-source builds, keeping the source directory clean.
 2. **Configure Header File**: Explains how to use a configuration header file to set project-specific variables. **Feature**: Some times it is important to use a static template file (not header file!), this allow to avoid unnecessary recompilation of files that don't require any changes, thus speeding up the build process.
@@ -32,10 +139,6 @@ This section delves into more details about the best practices in the following 
 13. **Code Style Guidelines**: Describes the usage of Clang-format for enforcing code style guidelines.
 14. **Documentation Generation**: Demonstrates generating project documentation using tools like Doxygen or Sphinx.
 
-These detailed topics provide valuable insights into project lifecycle management with the CMake family of tools, helping you effectively develop and manage your projects from start to finish:
-![Alt text](cmake.webp)
-
-## Examples
 
 Each concept is demonstrated in a dedicated example folder containing relevant source code, Dockerfiles, and instructions on how to run and test the example. Refer to the individual example folders for detailed information on each concept implementation.
 
@@ -43,11 +146,9 @@ Each concept is demonstrated in a dedicated example folder containing relevant s
 
 To get started with the examples, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/bagdoportfolio/cmake-concepts-examples.git`
-2. Navigate to the desired example folder: `cd cmake-concepts-examples/<example-folder>`
+1. Clone this repository: `git clone git@gitlab.com:bagdoportfolio/cmake-concepts-examples.git`
+2. Navigate to the desired example folder.
 3. Follow the instructions provided in the example's README to build and run the example.
-
-Make sure you have Docker installed and properly configured on your system.
 
 ## Development using Devcontainer
 
@@ -64,6 +165,24 @@ To use Devcontainer:
 7. From the Devcontainer terminal, navigate to the desired example folder and follow the instructions provided in the example's README to build and run the example.
 
 Using Devcontainer ensures consistent development environments across different machines and avoids issues related to different system configurations.
+
+## Run PlantUML on the Markdown file
+
+On the command line:
+
+```
+plantuml -tpng README.md
+```
+
+or run program in a virtual X environment without requiring a physical X server
+
+```
+xvfb-run java -jar /plantuml/plantuml.jar -tpng README.md
+```
+
+For every PlantUML block in the file, one png diagram is generated. When the markdown to html converter is running, the html will contain image links to the generated images.
+
+Reference: https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f
 
 ## Contributing
 
