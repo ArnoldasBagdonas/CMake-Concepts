@@ -1,0 +1,4 @@
+https://github.com/leimao/Doxygen-CPP-TriangleLib
+https://github.com/leimao/Sphinx-Python-TriangleLib
+https://github.com/leimao/Sphinx-Python-TriangleLib/tree/master/docs
+https://subscription.packtpub.com/book/programming/9781788470711/15/ch15lvl1sec21/introduction
