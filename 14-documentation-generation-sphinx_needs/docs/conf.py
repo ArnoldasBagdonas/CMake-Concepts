@@ -16,13 +16,13 @@ import xml.etree.ElementTree as ET
 import subprocess
 
 # Define the Doxygen XML path
-doxygen_xml_path = os.path.abspath('/workspace/build/breathe/xml')
+doxygen_xml_path = os.path.abspath('/workspace/14-documentation-generation-sphinx_needs/build/breathe/xml')
 
 # Add the Doxygen XML directory to the Python path
 sys.path.insert(0, doxygen_xml_path)  
 
 # Doxygen
-subprocess.call('doxygen /workspace/build/DoxyfileBreathe', shell=True)
+subprocess.call('doxygen /workspace/14-documentation-generation-sphinx_needs/build/DoxyfileBreathe', shell=True)
 
 # -- Project information -----------------------------------------------------
 
