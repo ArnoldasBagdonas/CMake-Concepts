@@ -15,7 +15,7 @@ This repository provides examples and demonstrations of best practices in CMake,
 
 These detailed topics offer valuable insights into project lifecycle management with the CMake family of tools, helping you effectively develop and manage your projects from start to finish:
 
-![](CMakeFlowchart.png)
+![](CMakeFlowchart.jpg)
 
 - C, CMake time
 - G, Generation time
