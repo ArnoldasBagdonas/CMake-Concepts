@@ -54,7 +54,7 @@ To perform an out-of-source build, follow these steps:
    ```
 3. Run the CMake command from the build directory, specifying the path to the source code directory. For example:
    ```bash
-   cmake /path/to/source/code
+   cmake ..
    ```
 4. CMake will generate the build files (e.g., Makefiles, Visual Studio solution files) in the build directory based on the CMakeLists.txt file in the source code directory.
 5. Build the project using the generated build system (e.g., Makefiles):
@@ -64,7 +64,7 @@ To perform an out-of-source build, follow these steps:
 6. The built binaries and artifacts will be placed in the build directory, keeping them separate from the source code.
 7. From the build directory, run the resulting executable:
    ```bash
-   ./hello
+   ./test_binary
    ```
 You should see the output from the "hello" program.
 
@@ -80,6 +80,16 @@ To run the tests, follow these steps:
    This will execute the tests and display the test results.
 
 By following these steps, you can build and run the example program, as well as execute the tests to verify the functionality of the code.
+
+## Getting Started
+
+To get started with the examples, follow these steps:
+
+1. Clone this repository: `git clone git@github.com:ArnoldasBagdonas/CMake-Concepts.git`
+2. Navigate to the desired example folder: `cd cmake-concepts-examples/<example-folder>`
+3. Follow the instructions provided in the example's README to build and run the example.
+
+Make sure you have Docker installed and properly configured on your system.
 
 ## Contributing
 

@@ -1,34 +1,14 @@
 # CMake Project
 
-This is a generic CMake project that can serve as a starting point for various C++ projects. It includes basic CMake setup, a directory structure, and common CMake targets.
-
-## Clone the Project
-
-To clone this project, follow these instructions:
-
-```bash
-git clone <repository_url>
-cd <project_directory>
-```
-## Directory Structure
-The project directory structure is as follows:
-```
-project/
-    CMakeLists.txt          # Main CMake configuration file
-    src/                    # Source code directory
-        main.cpp            # Main application source file
-    include/                # Header files directory
-        mylib.h             # Example header file
-    build/                  # Build directory (create this)
-    CMake/                  # CMake-related configuration files (create this)
-```
-
+This is a generic CMake project that can serve as a starting point for various Doxyegn, Sphinx documentation generation projects . It includes basic CMake setup, a directory structure, and common CMake targets.
 
 ## CMake Targets
 Here are the common CMake targets you can use in this project:
 
 - **Build**: Compiles the project and generates executable or library files. To build the project, run:
   ```bash
+  mkdir build
+  cmake -S . -B build
   cmake --build build/
   ```
 - **Clean**: Removes all build artifacts. To clean the project, run:
@@ -53,6 +33,16 @@ Here are the common CMake targets you can use in this project:
   ```
 
 Feel free to modify this project structure and add more targets according to your specific project requirements. Make sure to update the CMakeLists.txt file to reflect any changes in your project's configuration.
+
+## Getting Started
+
+To get started with the examples, follow these steps:
+
+1. Clone this repository: `git clone git@github.com:ArnoldasBagdonas/CMake-Concepts.git`
+2. Navigate to the desired example folder: `cd cmake-concepts-examples/<example-folder>`
+3. Follow the instructions provided in the example's README to build and run the example.
+
+Make sure you have Docker installed and properly configured on your system.
 
 ## Contributing
 

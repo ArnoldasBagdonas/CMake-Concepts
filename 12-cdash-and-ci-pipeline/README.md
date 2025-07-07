@@ -143,9 +143,9 @@ The -DCMAKE_BUILD_TYPE=Release flag specifies the build type as Release, which e
 6. The built binaries and artifacts will be placed in the build directory, keeping them separate from the source code.
 7. From the build directory, run the resulting executable:
    ```bash
-   ./hello
+   ./allDefects
    ```
-You should see the output from the "hello" program.
+You should see the output from the "allDefects" program.
 
 > **_NOTE:_** It's important to note that the build directory should be excluded from version control systems (e.g., Git) by adding it to the project's .gitignore file. This ensures that the build artifacts are not inadvertently committed to the repository.
 

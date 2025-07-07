@@ -123,7 +123,7 @@ Overall, this CMake configuration simplifies the process of adding subprojects a
 5. To run the built executables:
    ```bash
    ./subproject1/subproject1
-   ./subproject1/subproject2
+   ./subproject2/subproject2
 
 ## Analyzing the Results
 
@@ -156,6 +156,16 @@ Integrating static code analysis into your Continuous Integration (CI) pipeline 
 - **Combine with Other CI Checks**: Static code analysis is just one part of a comprehensive CI process. It's essential to combine it with other CI checks, such as unit tests, integration tests, and code reviews, to ensure a robust development workflow.
 
 By integrating static code analysis into your CI pipeline, you can proactively identify and address potential issues, maintain code quality, and improve the overall reliability and security of your software projects. Regularly running static analysis helps catch bugs early, streamlines the development process, and ultimately leads to more efficient and higher-quality code.
+
+## Getting Started
+
+To get started with the examples, follow these steps:
+
+1. Clone this repository: `git clone git@github.com:ArnoldasBagdonas/CMake-Concepts.git`
+2. Navigate to the desired example folder: `cd cmake-concepts-examples/<example-folder>`
+3. Follow the instructions provided in the example's README to build and run the example.
+
+Make sure you have Docker installed and properly configured on your system.
 
 ## Contributing
 

@@ -59,11 +59,11 @@ To perform an out-of-source build, follow these steps:
    ```
 3. Run the CMake command from the build directory, specifying the path to the source code directory. For example:
    ```bash
-   cmake -DCMAKE_BUILD_TYPE=Release /path/to/source/code
+   cmake -DCMAKE_BUILD_TYPE=Release ..
    ```
    Replace /path/to/source/code with the actual path to your source code directory.
 The -DCMAKE_BUILD_TYPE=Release flag specifies the build type as Release, which enables optimizations and produces a release-ready build.
-4. CMake will generate the build files (e.g., Makefiles, Visual Studio solution files) in the build directory based on the CMakeLists.txt file in the source code directory.
+4. CMake will generate the build files in the build directory based on the CMakeLists.txt file in the source code directory.
 5. Build the project using the generated build system (e.g., Makefiles):
    ```bash
    cmake --build .
@@ -71,7 +71,7 @@ The -DCMAKE_BUILD_TYPE=Release flag specifies the build type as Release, which e
 6. The built binaries and artifacts will be placed in the build directory, keeping them separate from the source code.
 7. From the build directory, run the resulting executable:
    ```bash
-   ./hello
+   ./exampleproject_inst_bin
    ```
 You should see the output from the "hello" program.
 
@@ -113,9 +113,18 @@ If you want to remove the installed example project from your system, follow the
 1. Open a terminal or command prompt in the build directory where the project was installed.
 2. Run the following command to uninstall the project:
    ```bash
-   cmake --build . --target uninstall
+   sudo cmake --build . --target uninstall
    ```
 
+## Getting Started
+
+To get started with the examples, follow these steps:
+
+1. Clone this repository: `git clone git@github.com:ArnoldasBagdonas/CMake-Concepts.git`
+2. Navigate to the desired example folder: `cd cmake-concepts-examples/<example-folder>`
+3. Follow the instructions provided in the example's README to build and run the example.
+
+Make sure you have Docker installed and properly configured on your system.
 
 ## Contributing
 
