@@ -51,7 +51,7 @@ Each concept is demonstrated in a dedicated example folder containing relevant s
 
 To get started with the examples, follow these steps:
 
-1. Clone this repository: `git clone git@gitlab.com:bagdoportfolio/cmake-concepts-examples.git`
+1. Clone this repository: `git clone git@github.com:ArnoldasBagdonas/CMake-Concepts.git`
 2. Navigate to the desired example folder.
 3. Follow the instructions provided in the example's README to build and run the example.
 
