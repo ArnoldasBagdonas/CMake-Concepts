@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/cpp
+{
+	"name": "C++",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"extensions": [
+		"ms-vscode.cpptools-extension-pack",
+		"hbenl.vscode-test-explorer",
+	],
+	"settings": {
+		"files.eol": "\n",
+		"cmake.configureSettings": {
+			"CMAKE_BUILD_TYPE": "Debug"
+		}
+	},
+	// Attach physical USB device as per instructions below:
+	// https://learn.microsoft.com/en-us/windows/wsl/connect-usb
+	"runArgs": [
+		"--privileged",
+		"--device=/dev/bus/usb:/dev/bus/usb"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace,type=bind",
+	"workspaceFolder": "/workspace"
+	// Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
+	//"remoteUser": "root"
+	// vscode Permission denied during installation step ! 
+	"remoteUser": "vscode"
+}
