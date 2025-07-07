@@ -3,13 +3,21 @@
 {
 	"name": "C++",
 	"build": {
-		"dockerfile": "Dockerfile"
+		//use custom devcontainer
+		//"dockerfile": "Dockerfile"
+		//use main devcontainer
+		"dockerfile": "../../.devcontainer/Dockerfile"
+		//"dockerfile": "../../.devcontainer/Dockerfile.alpine"
 	},
+	
 	"extensions": [
-		"ms-vscode.cmake-tools",
-		"ms-vscode.cpptools"
+		"ms-vscode.cpptools-extension-pack",
+		"hbenl.vscode-test-explorer",
 	],
 	"settings": {
+		"files.eol": "\n",   // for LF (Unix style)
+		// or
+		// "files.eol": "\r\n",  // for CRLF (Windows style)
 		"cmake.configureSettings": {
 			"CMAKE_BUILD_TYPE": "Debug"
 		}
@@ -21,8 +29,10 @@
 		"--device=/dev/bus/usb:/dev/bus/usb"
 	],
 	"workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspace,type=bind",
-	"workspaceFolder": "/workspace/03-specify-cpp-standard",
+	"workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
 	// Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "root"
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	// Automatically convert CRLF to LF after container is created
+	"postCreateCommand": "find . -type f \\( -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.c\" -o -name \"*.hpp\" -o -name \"*.txt\" -o -name \"*.sh\" \\) -exec sed -i 's/\\r$//' {} +"
 }

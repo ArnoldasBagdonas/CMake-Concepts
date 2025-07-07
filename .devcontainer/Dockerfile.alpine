@@ -1,0 +1,11 @@
+# Use Alpine as the base image
+FROM alpine:latest
+
+# Install build tools and other dependencies
+RUN apk add --no-cache build-base gdb cmake git python3 boost-dev shadow
+
+# Add a user named vscode
+RUN useradd -m vscode
+
+# Set default shell
+ENTRYPOINT ["/bin/sh"]
